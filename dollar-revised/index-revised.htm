@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>$1 Recognizer -- Revised to Show Pre-Processing Steps</title>
+	<link href="index_files/styles.css" rel="stylesheet" type="text/css">
+	<!--[if IE]><script src="excanvas.js"></script><![endif]-->
+	<script type="text/javascript" src="index_files/canvas.text.js"></script>
+	<script type="text/javascript" src="index_files/gentilis-normal-normal.js"></script>
+	<script type="text/javascript" src="index_files/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="dollar-revised.js"></script>
+	<script type="text/javascript"><!--
+	    //
+		// Startup
+		//
+		var _isDown, _points, _r, _g, _rc;
+		var _ppg, _pprc; // Lisa added for preproc canvas 1/4/2023
+		
+		function onLoadEvent()
+		{
+			_points = new Array();
+			_r = new DollarRecognizer();
+
+			var canvas = document.getElementById('myCanvas');
+			_g = canvas.getContext('2d');
+			_g.fillStyle = "rgb(0,0,225)";
+			_g.strokeStyle = "rgb(0,0,225)";
+			_g.lineWidth = 3;
+			_g.font = "16px Gentilis";
+			_rc = getCanvasRect(canvas); // canvas rect on page
+			_g.fillStyle = "rgb(255,255,136)";
+			_g.fillRect(0, 0, _rc.width, 20);
+
+			// Lisa added to init appearance of preproc window 1/4/2023
+			var ppCanvas = document.getElementById('preprocCanvas');
+			_ppg = ppCanvas.getContext('2d');
+			_ppg.fillStyle = "rgb(0,0,225)";
+			_ppg.strokeStyle = "rgb(0,0,225)";
+			_ppg.lineWidth = 3;
+			_ppg.font = "16px Gentilis";
+			_pprc = getCanvasRect(ppCanvas); // canvas rect on page
+			_ppg.fillStyle = "rgb(255,255,136)";
+			_ppg.fillRect(0, 0, _pprc.width, 20);
+			
+			_isDown = false;
+		}
+		function getCanvasRect(canvas)
+		{
+			var w = canvas.width;
+			var h = canvas.height;
+
+			var cx = canvas.offsetLeft;
+			var cy = canvas.offsetTop;
+			while (canvas.offsetParent != null)
+			{
+				canvas = canvas.offsetParent;
+				cx += canvas.offsetLeft;
+				cy += canvas.offsetTop;
+			}
+			return {x: cx, y: cy, width: w, height: h};
+		}
+		function getScrollX()
+		{
+			var scrollX = $(window).scrollLeft();
+			return scrollX;
+		}
+		function getScrollY()
+		{
+			var scrollY = $(window).scrollTop();
+			return scrollY;
+		}
+		//
+		// Mouse Events
+		//
+		function mouseDownEvent(x, y, button)
+		{
+			document.onselectstart = function() { return false; } // disable drag-select
+			document.onmousedown = function() { return false; } // disable drag-select
+			if (button <= 1)
+			{
+				_isDown = true;
+				x -= _rc.x - getScrollX();
+				y -= _rc.y - getScrollY();
+				if (_points.length > 0)
+					_g.clearRect(0, 0, _rc.width, _rc.height);
+				_points.length = 1; // clear
+				_points[0] = new Point(x, y);
+				drawText(_g,_rc,"Recording unistroke...", 1, 14, false);
+				_g.fillRect(x - 4, y - 3, 9, 9);
+			}
+			else if (button == 2)
+			{
+				drawText(_g,_rc,"Recognizing gesture...", 1, 14, false);
+			}
+		}
+		function mouseMoveEvent(x, y, button)
+		{
+			if (_isDown)
+			{
+				x -= _rc.x - getScrollX();
+				y -= _rc.y - getScrollY();
+				_points[_points.length] = new Point(x, y); // append
+				drawConnectedPoint(_g,_points.length - 2, _points.length - 1);
+			}
+		}
+		function mouseUpEvent(x, y, button)
+		{
+			document.onselectstart = function() { return true; } // enable drag-select
+			document.onmousedown = function() { return true; } // enable drag-select
+			if (_isDown || button == 2)
+			{
+				_isDown = false;
+				if (_points.length >= 10)
+				{
+					var result = _r.Recognize(_points, document.getElementById('useProtractor').checked);
+					drawText(_g,_rc,"Result: " + result.Name + " (" + round(result.Score,2) + ") in " + result.Time + " ms.", 1, 14, false);
+				}
+				else // fewer than 10 points were inputted
+				{
+					drawText(_g,_rc,"Too few points made. Please try again.", 1, 14, false);
+				}
+			}
+		}
+		// Lisa added graphics & rect params for pre-proc steps vis 1/4/2023
+		// also added explicit x,y coords for drawing multiple text messages 1/4/2023
+		function drawText(graphics, rect, str, x, y, debug, rgb)
+		{
+			// all refs to graphics were _g and rect were _rc
+			// Lisa also added this debug chek to not replace text msgs for preproc 1/4/2023
+			if (!debug) {
+				graphics.fillStyle = "rgb(255,255,136)";
+				graphics.fillRect(0, 0, rect.width, 20);
+				graphics.fillStyle = "rgb(0,0,255)";
+			} else {
+				graphics.fillStyle = rgb;
+			}
+			//graphics.fillText(str, 1, 14);
+			graphics.fillText(str, x, y);
+		}
+		// Lisa added graphics param for pre-proc steps vis 1/4/2023
+		function drawConnectedPoint(graphics, from, to)
+		{
+			// all refs to graphics were _g
+			graphics.beginPath();
+			graphics.moveTo(_points[from].X, _points[from].Y);
+			graphics.lineTo(_points[to].X, _points[to].Y);
+			graphics.closePath();
+			graphics.stroke();
+		}
+		function round(n, d) // round 'n' to 'd' decimals
+		{
+			d = Math.pow(10, d);
+			return Math.round(n * d) / d;
+		}
+		//
+		// Unistroke Adding and Clearing
+		//
+		function onClickAddExisting()
+		{
+			if (_points.length >= 10)
+			{
+				var unistrokes = document.getElementById('unistrokes');
+				var name = unistrokes[unistrokes.selectedIndex].value;
+				var num = _r.AddGesture(name, _points);
+				drawText(_g,_rc,"\"" + name + "\" added. No. of \"" + name + "\" defined: " + num + ".", 1, 14, false);
+			}
+		}
+		function onClickAddCustom()
+		{
+			var name = document.getElementById('custom').value;
+			if (_points.length >= 10 && name.length > 0)
+			{
+				var num = _r.AddGesture(name, _points);
+				drawText(_g,_rc,"\"" + name + "\" added. No. of \"" + name + "\" defined: " + num + ".", 1, 14, false);
+			}
+		}
+		function onClickCustom()
+		{
+			document.getElementById('custom').select();
+		}
+		function onClickDelete()
+		{
+			var num = _r.DeleteUserGestures(); // deletes any user-defined unistrokes
+			alert("All user-defined gestures have been deleted. Only the 1 predefined gesture remains for each of the " + num + " types.");
+		}
+	// -->
+	</script>
+</head>
+<body onload="onLoadEvent()">
+	<div id="Mast">
+		<a href="http://depts.washington.edu/acelab/proj/dollar/$1.png"><img style="float:right;margin-top:0em" src="index_files/$1.png" width="280" border="0"></a>
+		<p id="heading">$1 Unistroke Recognizer</p>
+		<p>
+		<a href="http://faculty.washington.edu/wobbrock/">Jacob O. Wobbrock</a>, University of Washington <a style="font-size:8pt" href="mailto:Jacob O. Wobbrock &lt;wobbrock@uw.edu&gt;?subject=From the $1 recognizer page">[contact]</a><br>
+		<a href="http://research.microsoft.com/en-us/um/people/awilson/">Andrew D. Wilson</a>, Microsoft Research<br>
+		<a href="http://research.google.com/pubs/author38946.html">Yang Li</a>, University of Washington<sup>†</sup>
+		</p>
+		<p style="font-size:8pt"><sup>†</sup>Currently at Google</p>
+	</div>
+	<div id="Content">
+		<p style="font-size:10pt;">Wobbrock, J.O., Wilson, A.D. and Li, Y. (2007). <a href="http://faculty.washington.edu/wobbrock/pubs/uist-07.01.pdf">Gestures without libraries, toolkits or training: A $1 recognizer for user interface prototypes.</a> Proceedings of the ACM Symposium on User Interface Software and Technology (UIST '07). Newport, Rhode Island (October 7-10, 2007).	New York: ACM Press, pp. 159-168.</p>
+		<p class="subhead">Demo</p>
+		<p>	In the demo below, only one unistroke template is loaded for each of the 16 gesture types. You can add additional
+			unistrokes as you wish, and even define your own custom unistrokes.	</p>
+		<hr/>
+			<!-- Gesture image and canvas -->
+			<table cellspacing="10" border="0">
+				<tbody><tr>
+					<td valign="top" align="left">
+						<p style="margin-bottom:4pt;font-size:10pt"><i>Make strokes on this canvas. If a misrecognition occurs,
+						add the misrecognized unistroke as an example of the intended gesture.</i>
+						</p>
+
+						<canvas id="myCanvas" style="background-color:#dddddd" onmousedown="mouseDownEvent(event.clientX, event.clientY, event.button)" onmousemove="mouseMoveEvent(event.clientX, event.clientY, event.button)" onmouseup="mouseUpEvent(event.clientX, event.clientY, event.button)" oncontextmenu="return false;" width="420" height="400">
+							<span style="background-color:#ffff88;">The &lt;canvas&gt; element is not supported by this browser.</span>
+						</canvas>
+
+						<!-- Editing area below stroking canvas area -->
+						<table style="font-size:10pt" width="420" border="0">
+							<tbody><tr>
+								<td valign="top" align="left">Add as example of existing type:</td>
+								<td valign="top" align="right">
+									<select id="unistrokes" style="width:136px" onkeypress="if (event.keyCode == 13) onClickAddExisting()">
+										<option selected="selected" value="triangle">triangle</option>
+										<option value="x">x</option>
+										<option value="rectangle">rectangle</option>
+										<option value="circle">circle</option>
+										<option value="check">check</option>
+										<option value="caret">caret</option>
+										<option value="zig-zag">zig-zag</option>
+										<option value="arrow">arrow</option>
+										<option value="left square bracket">left square bracket</option>
+										<option value="right square bracket">right square bracket</option>
+										<option value="v">v</option>
+										<option value="delete">delete</option>
+										<option value="left curly brace">left curly brace</option>
+										<option value="right curly brace">right curly brace</option>
+										<option value="star">star</option>
+										<option value="pigtail">pigtail</option>
+									</select>
+								</td>
+								<td valign="top" align="right"><input type="button" style="width:64px" value="  Add   " onclick="onClickAddExisting()"></td>
+							</tr>
+							<tr>
+								<td valign="top" align="left">Add as example of custom type:</td>
+								<td valign="top" align="right"><input type="text" id="custom" style="width:130px" value="Type name here..." onclick="onClickCustom()" onkeypress="if (event.keyCode == 13) onClickAddCustom()"></td>
+								<td valign="top" align="right"><input type="button" style="width:64px" value="  Add   " onclick="onClickAddCustom()"></td>
+							</tr>
+							<tr>
+								<td valign="top" align="left">Delete all user-defined gestures:</td>
+								<td valign="top" align="right">&nbsp;</td>
+								<td valign="top" align="right"><input type="button" style="width:64px" value="Delete" onclick="onClickDelete()"></td>
+							</tr>
+						</tbody></table>
+						<!-- End of editing area below stroking canvas area -->
+									<hr/>
+									<form style="font-size:10pt">
+										<input type="radio" name="search" id="useGSS" checked="checked">
+										<span style="font-weight:bold;color:red;">Use Golden Section Search <i>(original)</i></span>
+										<br>
+										<input type="radio" name="search" id="useProtractor">
+										<span style="font-weight:bold;color:red;">Use Protractor <i>(faster)</i></span>
+									</form>
+									<p></p>
+									<img src="index_files/unistrokes.gif" width="400"><br>
+					</td>
+					<!-- Lisa added this for showing of the pre-processing steps 1/4/2023 -->
+					<td valign="top" align="left">
+						<p></p>
+						<p style="margin-bottom:4pt;font-size:10pt"><br><i>Pre-processing output will appear on this canvas. (Points have been slightly translated for each step to ensure they do not overlap.)</i>
+						</p>
+						<canvas id="preprocCanvas" style="background-color:#eeeeee" oncontextmenu="return false;" width="1250" height="950">
+							<span style="background-color:#ffff88;">The &lt;canvas&gt; element is not supported by this browser.</span>
+						</canvas>
+					</td>
+				</tr>
+			</tbody></table>
+		<hr/>
+		<p style="font-size:8pt;text-align:left">
+			Copyright © 2007-2022 Jacob O. Wobbrock. All rights reserved. <br>
+			Last updated Jan 4, 2023 by Lisa Anthony to add pre-processing visualization steps.
+		</p>
+	</ol></div>
+
+</body></html>
