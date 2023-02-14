@@ -12,6 +12,7 @@ Unistrokes = {key: recognizer.preprocess(value) for key, value in recognizer.Uni
 # Initialising the angle range and precision
 angleRange = math.radians(45)
 anglePrecision = math.radians(2)
+halfDiagonal = 0.5 * recognizer.Diagonal
 
 # Variable to store the user's unistroke
 currentUnistroke = []
@@ -96,7 +97,7 @@ def recognize(event):
         end_time = time.time()
 
         # Updating the display text
-        displayText.set('Result: No match. (0) in ' + str(round((end_time - start_time) * 1000)) + 'ms.')
+        displayText.set('Result: No match. (0) in ' + str(round((end_time - start_time) * 1000)) + ' ms.')
         
         # Resetting the user's unistroke
         currentUnistroke = []
@@ -122,10 +123,10 @@ def recognize(event):
     # Checking if unistroke is found
     if u:
         # Updating the display text
-        displayText.set('Result: ' + u.replace('_', ' ') + ' (' + str(round(b, 2)) + ') in ' + str(round((end_time - start_time) * 1000)) + 'ms.')
+        displayText.set('Result: ' + u.replace('_', ' ') + ' (' + str(round((1.0 - b / halfDiagonal), 2)) + ') in ' + str(round((end_time - start_time) * 1000)) + ' ms.')
     else:
         # Updating the display text
-        displayText.set('Result: No match. (0) in ' + str(round((end_time - start_time) * 1000)) + 'ms.')
+        displayText.set('Result: No match. (0) in ' + str(round((end_time - start_time) * 1000)) + ' ms.')
 
     # Resetting the user's unistroke
     currentUnistroke = []
