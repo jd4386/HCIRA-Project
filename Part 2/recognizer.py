@@ -26,6 +26,7 @@ Phi = (-1 + 5 ** 0.5) / 2
 NumPoints = 64
 SquareSize = 250
 Origin = [0, 0]
+Diagonal = (SquareSize * SquareSize + SquareSize * SquareSize) ** 0.5
 
 
 # Function to return the score when compared to a template
