@@ -1,0 +1,9 @@
+Recognition Log: [STUDENT NAME] // [ALGORITHM] // [DATASET] // USER-DEPENDENT RANDOM-100,,,,,,,,,,,
+User[all-users],GestureType[all-gestures-types],RandomIteration[1to100],#ofTrainingExamples[E],TotalSizeOfTrainingSet[count],TrainingSetContents[specific-gesture-instances],Candidate[specific-instance],RecoResultGestureType[what-was-recognized],CorrectIncorrect[1or0],RecoResultScore,RecoResultBestMatch[specific-instance],RecoResultNBestSorted[instance-and-score]
+p143,A,1,1,5,"{p143-a-1,p143-e-4,p143-k-2,p143-q-5,p143-x-2}",p143-a-2,A,1,0.25,p143-a-1,"{p143-a-1,0.25,p143-e-4,0.53,p143-k-2,0.64,p143-q-5,1.45,p143-x-2,4.22}"
+p143,E,1,1,5,"{p143-a-1,p143-e-4,p143-k-2,p143-q-5,p143-x-2}",p143-e-1,E,1,0.32,p143-e-4,"{p143-e-4,0.32,p143-e-4,0.53,p143-a-1,0.54,p143-q-5,1.33,p143-k-2,1.86,p143-x-2,3.54}"
+p143,K,1,1,5,"{p143-a-1,p143-e-4,p143-k-2,p143-q-5,p143-x-2}",p143-k-4,X,0,0.64,p143-x-2,"{p143-x-2,0.64,p143-k-2,0.66,p143-e-4,0.86,p143-a-1,1.43,p143-q-5,2.11}"
+p143,Q,1,1,5,"{p143-a-1,p143-e-4,p143-k-2,p143-q-5,p143-x-2}",p143-q-3,Q,1,0.13,p143-q-5,"{p143-q-5,0.13,p143-e-4,0.24,p143-k-2,0.85,p143-a-1,1.86,p143-x-2,4.26}"
+p143,X,1,1,5,"{p143-a-1,p143-e-4,p143-k-2,p143-q-5,p143-x-2}",p143-x-1,X,1,0.02,p143-x-2,"{p143-x-2,0.02,p143-e-4,0.32,p143-a-1,0.49,p143-k-2,1.34,p143-q-5,3.75}"
+,,,,,,,,,,,
+TotalAvgAccuracy,0.8,,,,,,,,,,
