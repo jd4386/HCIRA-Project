@@ -1,3 +1,9 @@
+'''
+Project Team Members:
+1. Jagan Mohan Reddy Dwarampudi (UFID: 9357-2863)
+2. Mohammad Shameer Mulla (UFID: 7066-4007)
+'''
+
 # Imports
 import csv
 import os
@@ -10,6 +16,7 @@ import xml.etree.ElementTree as ET
 Path = 'Part 3/xml_logs'
 Results_Path = 'Part 3/HCIRA-Proj1-logfile.csv'
 Gestures = ['delete_mark', 'right_sq_bracket', 'triangle', 'right_curly_brace', 'star', 'x', 'pigtail', 'left_sq_bracket', 'circle', 'caret', 'question_mark', 'v', 'check', 'rectangle', 'left_curly_brace', 'arrow']
+
 
 # Function to get the points from the XML file
 getPointsFromRoot = lambda gesture : [[int(point.attrib['X']), int(point.attrib['Y'])] for point in gesture]

@@ -1,12 +1,20 @@
+'''
+Project Team Members:
+1. Jagan Mohan Reddy Dwarampudi (UFID: 9357-2863)
+2. Mohammad Shameer Mulla (UFID: 7066-4007)
+'''
+
 # Importing required libraries
 import math
 import time
 import recognizer
 import tkinter as tk
 import testing
+import export
+import store
 
 # Variable to control whether the GUI is displayed or not
-guiFlag = False
+guiFlag = True
 
 # If guiFlag is False, run the testing function
 if not guiFlag:
@@ -15,15 +23,12 @@ if not guiFlag:
 # Preprocessing the template unistrokes
 unistrokes = {key: recognizer.preprocess(value) for key, value in recognizer.Unistrokes.items()}
 
-# Variable to store the user's unistroke
-currentUnistroke = []
-
 # Initialising the XY coordinates
 presentX, presentY = 0, 0
 
 
 # Function to capture the initial mouse coordinates
-def getXY(event):
+def getXY(event, canvas, displayText, displayTextFlag=True):
     canvas.delete("all")
 
     # Updating the initial mouse coordinates
@@ -31,8 +36,7 @@ def getXY(event):
     presentX, presentY = event.x, event.y
 
     # Adding the initial mouse coordinates to the user's unistroke
-    global currentUnistroke
-    currentUnistroke.append([presentX, presentY])
+    store.updateCurrentUnistroke(presentX, presentY)
 
     # Drawing a box at the initial mouse coordinates
     box_len = 3
@@ -46,12 +50,12 @@ def getXY(event):
     )
 
     # Updating the display text
-    global displayText
-    displayText.set('Recording unistroke...')
+    if displayTextFlag:
+        displayText.set('Recording unistroke...')
 
     
 # Function to draw a line from the initial points to the new mouse location and updates the points to the new mouse location
-def drawLine(event):
+def drawLine(event, canvas):
     global presentX, presentY
 
     # Drawing a line from the previous mouse coordinates to the new mouse coordinates
@@ -65,23 +69,22 @@ def drawLine(event):
     presentX, presentY = event.x, event.y
 
     # Adding the new mouse coordinates to the user's unistroke
-    global currentUnistroke
-    currentUnistroke.append([presentX, presentY])
+    store.updateCurrentUnistroke(presentX, presentY)
 
 
 # Function to recognize the unistroke
-def recognize(event):
-    global currentUnistroke, displayText
+def recognize(event, displayText):
 
     # Checking if the user's unistroke is empty
-    if len(currentUnistroke) <= 1:
+    if len(store.currentUnistroke) <= 1:
         displayText.set('Too few points made. Please try again.')
         return
 
     # Starting the timer
     start_time = time.time()
 
-    u, b = recognizer.recognize(currentUnistroke, unistrokes)
+    # Recognizing the user's unistroke
+    u, b = recognizer.recognize(store.currentUnistroke, unistrokes)
 
     # Timer ends
     end_time = time.time()
@@ -90,14 +93,13 @@ def recognize(event):
     displayText.set('Result: ' + u + ' (' + b + ') in ' + str(round((end_time - start_time) * 1000)) + ' ms.')
 
     # Resetting the user's unistroke
-    currentUnistroke = []
+    store.resetCurrentUnistroke()
 
 
 # Function to reset the canvas
-def clearCanvas():
+def clearCanvas(canvas):
     # Resetting the user's unistroke
-    global currentUnistroke
-    currentUnistroke = []
+    store.resetCurrentUnistroke()
 
     # Resetting the drawing canvas
     canvas.delete("all")
@@ -126,12 +128,16 @@ canvas = tk.Canvas(root, bg='#dddddd')
 canvas.pack(expand=True, fill=tk.BOTH)
 
 # Attaching the left mouse click and mouse motion to the designated functions.
-canvas.bind('<Button-1>', getXY)
-canvas.bind('<B1-Motion>', drawLine)
-canvas.bind('<ButtonRelease-1>', recognize)
+canvas.bind('<Button-1>', lambda event: getXY(event, canvas, displayText))
+canvas.bind('<B1-Motion>', lambda event: drawLine(event, canvas))
+canvas.bind('<ButtonRelease-1>', lambda event: recognize(event, displayText))
 
 # Clear button that resets the canvas
-button = tk.Button(root, text='Clear', width=25, command=clearCanvas)
+button = tk.Button(root, text='Clear', width=25, command=lambda: clearCanvas(canvas))
+button.pack(pady=5)
+
+# Create dataset button that opens a new window
+button = tk.Button(root, text='Create Dataset', width=25, command=lambda: export.datasetWindow(root, getXY, drawLine, clearCanvas))
 button.pack(pady=5)
 
 # Code to keep the window running until closed
