@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<Gesture Name="03" Subject="4" Number="3" NumPts="31">
+    <Point X="287" Y="227"/>
+    <Point X="287" Y="228"/>
+    <Point X="288" Y="230"/>
+    <Point X="291" Y="233"/>
+    <Point X="295" Y="238"/>
+    <Point X="300" Y="244"/>
+    <Point X="305" Y="251"/>
+    <Point X="311" Y="258"/>
+    <Point X="318" Y="265"/>
+    <Point X="325" Y="272"/>
+    <Point X="331" Y="277"/>
+    <Point X="336" Y="280"/>
+    <Point X="337" Y="280"/>
+    <Point X="337" Y="277"/>
+    <Point X="337" Y="274"/>
+    <Point X="337" Y="267"/>
+    <Point X="337" Y="257"/>
+    <Point X="337" Y="243"/>
+    <Point X="338" Y="225"/>
+    <Point X="341" Y="205"/>
+    <Point X="346" Y="179"/>
+    <Point X="353" Y="150"/>
+    <Point X="364" Y="120"/>
+    <Point X="379" Y="86"/>
+    <Point X="396" Y="58"/>
+    <Point X="408" Y="39"/>
+    <Point X="418" Y="24"/>
+    <Point X="426" Y="12"/>
+    <Point X="431" Y="4"/>
+    <Point X="434" Y="-1"/>
+    <Point X="435" Y="-1"/>
+</Gesture>
