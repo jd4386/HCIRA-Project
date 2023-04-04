@@ -2,7 +2,7 @@
 import math
 import time
 import recognizer
-import tkinter as tk
+import tkinter as tk 
 from pprint import pprint
 
 

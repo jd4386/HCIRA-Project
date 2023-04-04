@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<Gesture Name="check09" Subject="3" Number="9" NumPts="28">
+    <Point X="349" Y="313" T="0"/>
+    <Point X="349" Y="315" T="0"/>
+    <Point X="352" Y="318" T="0"/>
+    <Point X="355" Y="324" T="0"/>
+    <Point X="359" Y="330" T="0"/>
+    <Point X="364" Y="338" T="0"/>
+    <Point X="368" Y="345" T="0"/>
+    <Point X="372" Y="351" T="0"/>
+    <Point X="374" Y="356" T="0"/>
+    <Point X="376" Y="359" T="0"/>
+    <Point X="377" Y="358" T="0"/>
+    <Point X="377" Y="357" T="0"/>
+    <Point X="378" Y="353" T="0"/>
+    <Point X="381" Y="347" T="0"/>
+    <Point X="386" Y="339" T="0"/>
+    <Point X="390" Y="331" T="0"/>
+    <Point X="396" Y="321" T="0"/>
+    <Point X="405" Y="310" T="0"/>
+    <Point X="415" Y="298" T="0"/>
+    <Point X="426" Y="286" T="0"/>
+    <Point X="438" Y="273" T="0"/>
+    <Point X="452" Y="259" T="0"/>
+    <Point X="465" Y="247" T="0"/>
+    <Point X="477" Y="236" T="0"/>
+    <Point X="489" Y="226" T="0"/>
+    <Point X="499" Y="219" T="0"/>
+    <Point X="507" Y="212" T="0"/>
+    <Point X="513" Y="208" T="0"/>
+</Gesture>
