@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<Gesture Name="check02" Subject="3" Number="2" NumPts="32">
+    <Point X="327" Y="296" T="0"/>
+    <Point X="327" Y="297" T="0"/>
+    <Point X="328" Y="299" T="0"/>
+    <Point X="329" Y="303" T="0"/>
+    <Point X="331" Y="309" T="0"/>
+    <Point X="333" Y="314" T="0"/>
+    <Point X="335" Y="320" T="0"/>
+    <Point X="338" Y="327" T="0"/>
+    <Point X="340" Y="331" T="0"/>
+    <Point X="343" Y="335" T="0"/>
+    <Point X="344" Y="338" T="0"/>
+    <Point X="345" Y="340" T="0"/>
+    <Point X="346" Y="340" T="0"/>
+    <Point X="347" Y="340" T="0"/>
+    <Point X="348" Y="340" T="0"/>
+    <Point X="350" Y="338" T="0"/>
+    <Point X="352" Y="335" T="0"/>
+    <Point X="356" Y="330" T="0"/>
+    <Point X="362" Y="322" T="0"/>
+    <Point X="370" Y="314" T="0"/>
+    <Point X="380" Y="306" T="0"/>
+    <Point X="390" Y="297" T="0"/>
+    <Point X="401" Y="288" T="0"/>
+    <Point X="412" Y="280" T="0"/>
+    <Point X="424" Y="271" T="0"/>
+    <Point X="436" Y="262" T="0"/>
+    <Point X="446" Y="252" T="0"/>
+    <Point X="455" Y="243" T="0"/>
+    <Point X="462" Y="234" T="0"/>
+    <Point X="469" Y="227" T="0"/>
+    <Point X="473" Y="221" T="0"/>
+    <Point X="476" Y="216" T="0"/>
+</Gesture>
