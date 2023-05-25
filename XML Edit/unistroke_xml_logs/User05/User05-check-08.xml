@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<Gesture Name="check~08" Subject="5" Number="8" NumPts="40" InputType="Trackpad" Speed="MEDIUM">
+    <Stroke index="1">
+        <Point X="71" Y="205" T="0"/>
+        <Point X="73" Y="206" T="0"/>
+        <Point X="75" Y="208" T="0"/>
+        <Point X="77" Y="210" T="0"/>
+        <Point X="78" Y="213" T="0"/>
+        <Point X="80" Y="215" T="0"/>
+        <Point X="82" Y="217" T="0"/>
+        <Point X="84" Y="220" T="0"/>
+        <Point X="87" Y="223" T="0"/>
+        <Point X="90" Y="225" T="0"/>
+        <Point X="91" Y="227" T="0"/>
+        <Point X="92" Y="229" T="0"/>
+        <Point X="93" Y="231" T="0"/>
+        <Point X="95" Y="233" T="0"/>
+        <Point X="97" Y="235" T="0"/>
+        <Point X="99" Y="237" T="0"/>
+        <Point X="101" Y="239" T="0"/>
+        <Point X="101" Y="236" T="0"/>
+        <Point X="101" Y="234" T="0"/>
+        <Point X="102" Y="230" T="0"/>
+        <Point X="102" Y="228" T="0"/>
+        <Point X="104" Y="223" T="0"/>
+        <Point X="105" Y="221" T="0"/>
+        <Point X="107" Y="216" T="0"/>
+        <Point X="110" Y="208" T="0"/>
+        <Point X="113" Y="201" T="0"/>
+        <Point X="115" Y="197" T="0"/>
+        <Point X="118" Y="190" T="0"/>
+        <Point X="120" Y="187" T="0"/>
+        <Point X="124" Y="180" T="0"/>
+        <Point X="126" Y="177" T="0"/>
+        <Point X="133" Y="168" T="0"/>
+        <Point X="137" Y="164" T="0"/>
+        <Point X="143" Y="158" T="0"/>
+        <Point X="146" Y="155" T="0"/>
+        <Point X="148" Y="153" T="0"/>
+        <Point X="150" Y="151" T="0"/>
+        <Point X="152" Y="149" T="0"/>
+        <Point X="152" Y="147" T="0"/>
+        <Point X="153" Y="145" T="0"/>
+    </Stroke>
+</Gesture>

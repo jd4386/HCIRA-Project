@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<Gesture Name="v~08" Subject="4" Number="8" NumPts="47" InputType="Trackpad" Speed="MEDIUM">
+    <Stroke index="1">
+        <Point X="333" Y="216" T="0"/>
+        <Point X="333" Y="217" T="0"/>
+        <Point X="333" Y="219" T="0"/>
+        <Point X="333" Y="221" T="0"/>
+        <Point X="335" Y="225" T="0"/>
+        <Point X="336" Y="230" T="0"/>
+        <Point X="339" Y="236" T="0"/>
+        <Point X="342" Y="243" T="0"/>
+        <Point X="346" Y="251" T="0"/>
+        <Point X="350" Y="259" T="0"/>
+        <Point X="355" Y="267" T="0"/>
+        <Point X="360" Y="276" T="0"/>
+        <Point X="365" Y="285" T="0"/>
+        <Point X="370" Y="293" T="0"/>
+        <Point X="375" Y="300" T="0"/>
+        <Point X="379" Y="305" T="0"/>
+        <Point X="381" Y="309" T="0"/>
+        <Point X="383" Y="313" T="0"/>
+        <Point X="385" Y="315" T="0"/>
+        <Point X="386" Y="316" T="0"/>
+        <Point X="387" Y="317" T="0"/>
+        <Point X="387" Y="315" T="0"/>
+        <Point X="387" Y="312" T="0"/>
+        <Point X="386" Y="308" T="0"/>
+        <Point X="386" Y="302" T="0"/>
+        <Point X="385" Y="295" T="0"/>
+        <Point X="384" Y="289" T="0"/>
+        <Point X="384" Y="282" T="0"/>
+        <Point X="384" Y="275" T="0"/>
+        <Point X="383" Y="269" T="0"/>
+        <Point X="383" Y="262" T="0"/>
+        <Point X="382" Y="255" T="0"/>
+        <Point X="381" Y="248" T="0"/>
+        <Point X="381" Y="241" T="0"/>
+        <Point X="381" Y="235" T="0"/>
+        <Point X="381" Y="229" T="0"/>
+        <Point X="381" Y="224" T="0"/>
+        <Point X="381" Y="219" T="0"/>
+        <Point X="381" Y="215" T="0"/>
+        <Point X="381" Y="211" T="0"/>
+        <Point X="381" Y="208" T="0"/>
+        <Point X="381" Y="205" T="0"/>
+        <Point X="381" Y="202" T="0"/>
+        <Point X="381" Y="200" T="0"/>
+        <Point X="381" Y="198" T="0"/>
+        <Point X="381" Y="197" T="0"/>
+        <Point X="381" Y="196" T="0"/>
+    </Stroke>
+</Gesture>

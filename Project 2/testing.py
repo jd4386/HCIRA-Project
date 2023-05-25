@@ -13,8 +13,8 @@ from icecream import ic
 import xml.etree.ElementTree as ET
 
 # Global variables
-Path = 'Part 5/custom_xml_logs'
-Results_Path = 'Part 5/HCIRA-Proj1-logfile.csv'
+Path = 'Project 2/custom_xml_logs'
+Results_Path = 'Project 2/HCIRA-Proj1-logfile.csv'
 Gestures = ['delete_mark', 'right_sq_bracket', 'triangle', 'right_curly_brace', 'star', 'x', 'pigtail', 'left_sq_bracket', 'circle', 'caret', 'zig-zag', 'v', 'check', 'rectangle', 'left_curly_brace', 'arrow']
 
 # Function to get the points from the XML file

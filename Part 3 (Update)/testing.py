@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 # Global variables
 Path = 'Part 3 (Update)/xml_logs'
-Results_Path = 'Part 3 (Update)/HCIRA-Proj1-logfile.csv'
+Results_Path = 'Part 3 (Update)/HCIRA-Proj1-logfile-temp.csv'
 Gestures = ['delete_mark', 'right_sq_bracket', 'triangle', 'right_curly_brace', 'star', 'x', 'pigtail', 'left_sq_bracket', 'circle', 'caret', 'question_mark', 'v', 'check', 'rectangle', 'left_curly_brace', 'arrow']
 
 # Function to get the points from the XML file
@@ -47,14 +47,14 @@ def readDataset(path, gestures):
     dataset = {}
 
     # Looping through all the users, speeds, gestures and examples
-    for U in range(2, 12):
+    for U in range(1, 11):
         for speed in ['slow', 'medium', 'fast']:
             for gesture in gestures:
                 for E in range(1, 11):
                     key = f'{U:02d}-{speed}-{gesture}-{E:02d}'
 
                     # Reading the XML file
-                    filepath = os.path.join(path, f's{U:02d}', speed, f'{gesture}{E:02d}.xml')
+                    filepath = os.path.join(path, f'luser{U:02d}', speed, f'{gesture}{E:02d}.xml')
                     root = ET.parse(filepath).getroot()
                     value = getPointsFromRoot(root)
 

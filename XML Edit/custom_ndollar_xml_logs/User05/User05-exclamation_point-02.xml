@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<Gesture Name="exclamation_point~02" Subject="5" Number="2" NumPts="47" InputType="stylus" Speed="MEDIUM">
+    <Stroke index="1">
+        <Point X="386" Y="145" T="0" Pressure="0"/>
+        <Point X="385" Y="147" T="0" Pressure="0"/>
+        <Point X="384" Y="150" T="0" Pressure="0"/>
+        <Point X="384" Y="152" T="0" Pressure="0"/>
+        <Point X="384" Y="155" T="0" Pressure="0"/>
+        <Point X="384" Y="157" T="0" Pressure="0"/>
+        <Point X="384" Y="161" T="0" Pressure="0"/>
+        <Point X="384" Y="165" T="0" Pressure="0"/>
+        <Point X="384" Y="170" T="0" Pressure="0"/>
+        <Point X="384" Y="175" T="0" Pressure="0"/>
+        <Point X="384" Y="184" T="0" Pressure="0"/>
+        <Point X="384" Y="189" T="0" Pressure="0"/>
+        <Point X="384" Y="195" T="0" Pressure="0"/>
+        <Point X="384" Y="201" T="0" Pressure="0"/>
+        <Point X="384" Y="205" T="0" Pressure="0"/>
+        <Point X="384" Y="210" T="0" Pressure="0"/>
+        <Point X="384" Y="215" T="0" Pressure="0"/>
+        <Point X="384" Y="221" T="0" Pressure="0"/>
+        <Point X="384" Y="226" T="0" Pressure="0"/>
+        <Point X="383" Y="232" T="0" Pressure="0"/>
+        <Point X="383" Y="236" T="0" Pressure="0"/>
+        <Point X="383" Y="241" T="0" Pressure="0"/>
+        <Point X="383" Y="246" T="0" Pressure="0"/>
+        <Point X="383" Y="251" T="0" Pressure="0"/>
+        <Point X="382" Y="256" T="0" Pressure="0"/>
+        <Point X="382" Y="260" T="0" Pressure="0"/>
+        <Point X="382" Y="264" T="0" Pressure="0"/>
+        <Point X="382" Y="268" T="0" Pressure="0"/>
+        <Point X="382" Y="271" T="0" Pressure="0"/>
+        <Point X="382" Y="275" T="0" Pressure="0"/>
+        <Point X="382" Y="279" T="0" Pressure="0"/>
+        <Point X="382" Y="282" T="0" Pressure="0"/>
+        <Point X="382" Y="289" T="0" Pressure="0"/>
+        <Point X="382" Y="292" T="0" Pressure="0"/>
+        <Point X="382" Y="295" T="0" Pressure="0"/>
+        <Point X="382" Y="298" T="0" Pressure="0"/>
+        <Point X="382" Y="300" T="0" Pressure="0"/>
+        <Point X="382" Y="302" T="0" Pressure="0"/>
+        <Point X="382" Y="304" T="0" Pressure="0"/>
+        <Point X="382" Y="306" T="0" Pressure="0"/>
+        <Point X="382" Y="308" T="0" Pressure="0"/>
+        <Point X="382" Y="314" T="0" Pressure="0"/>
+    </Stroke>
+    <Stroke index="2">
+        <Point X="380" Y="348" T="0" Pressure="0"/>
+        <Point X="378" Y="348" T="0" Pressure="0"/>
+        <Point X="377" Y="348" T="0" Pressure="0"/>
+        <Point X="376" Y="348" T="0" Pressure="0"/>
+        <Point X="376" Y="349" T="0" Pressure="0"/>
+    </Stroke>
+</Gesture>

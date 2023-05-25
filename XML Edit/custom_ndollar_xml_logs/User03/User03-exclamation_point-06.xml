@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<Gesture Name="exclamation_point~06" Subject="3" Number="6" NumPts="28" InputType="stylus" Speed="MEDIUM">
+    <Stroke index="1">
+        <Point X="379" Y="249" T="0" Pressure="0"/>
+        <Point X="377" Y="248" T="0" Pressure="0"/>
+        <Point X="377" Y="247" T="0" Pressure="0"/>
+        <Point X="377" Y="249" T="0" Pressure="0"/>
+        <Point X="377" Y="251" T="0" Pressure="0"/>
+        <Point X="377" Y="252" T="0" Pressure="0"/>
+        <Point X="377" Y="255" T="0" Pressure="0"/>
+        <Point X="376" Y="257" T="0" Pressure="0"/>
+        <Point X="376" Y="261" T="0" Pressure="0"/>
+        <Point X="376" Y="264" T="0" Pressure="0"/>
+        <Point X="376" Y="268" T="0" Pressure="0"/>
+        <Point X="373" Y="286" T="0" Pressure="0"/>
+        <Point X="373" Y="292" T="0" Pressure="0"/>
+        <Point X="372" Y="299" T="0" Pressure="0"/>
+        <Point X="372" Y="305" T="0" Pressure="0"/>
+        <Point X="371" Y="312" T="0" Pressure="0"/>
+        <Point X="370" Y="318" T="0" Pressure="0"/>
+        <Point X="370" Y="323" T="0" Pressure="0"/>
+        <Point X="369" Y="328" T="0" Pressure="0"/>
+        <Point X="369" Y="332" T="0" Pressure="0"/>
+        <Point X="369" Y="338" T="0" Pressure="0"/>
+        <Point X="369" Y="342" T="0" Pressure="0"/>
+        <Point X="369" Y="346" T="0" Pressure="0"/>
+        <Point X="369" Y="350" T="0" Pressure="0"/>
+    </Stroke>
+    <Stroke index="2">
+        <Point X="365" Y="398" T="0" Pressure="0"/>
+        <Point X="364" Y="398" T="0" Pressure="0"/>
+        <Point X="364" Y="397" T="0" Pressure="0"/>
+        <Point X="363" Y="397" T="0" Pressure="0"/>
+    </Stroke>
+</Gesture>

@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Gesture Name="exclamation_point09" Subject="5" Number="9" NumPts="57">
+    <Stroke index="1">
+        <Point X="397" Y="213" T="0"/>
+        <Point X="396" Y="215" T="0"/>
+        <Point X="396" Y="218" T="0"/>
+        <Point X="396" Y="220" T="0"/>
+        <Point X="396" Y="222" T="0"/>
+        <Point X="396" Y="225" T="0"/>
+        <Point X="396" Y="227" T="0"/>
+        <Point X="396" Y="230" T="0"/>
+        <Point X="396" Y="234" T="0"/>
+        <Point X="396" Y="237" T="0"/>
+        <Point X="396" Y="240" T="0"/>
+        <Point X="396" Y="243" T="0"/>
+        <Point X="396" Y="246" T="0"/>
+        <Point X="396" Y="250" T="0"/>
+        <Point X="396" Y="254" T="0"/>
+        <Point X="396" Y="257" T="0"/>
+        <Point X="396" Y="261" T="0"/>
+        <Point X="396" Y="264" T="0"/>
+        <Point X="396" Y="269" T="0"/>
+        <Point X="396" Y="273" T="0"/>
+        <Point X="395" Y="277" T="0"/>
+        <Point X="395" Y="284" T="0"/>
+        <Point X="394" Y="288" T="0"/>
+        <Point X="394" Y="292" T="0"/>
+        <Point X="393" Y="295" T="0"/>
+        <Point X="393" Y="300" T="0"/>
+        <Point X="392" Y="304" T="0"/>
+        <Point X="392" Y="307" T="0"/>
+        <Point X="392" Y="311" T="0"/>
+        <Point X="392" Y="314" T="0"/>
+        <Point X="392" Y="318" T="0"/>
+        <Point X="391" Y="322" T="0"/>
+        <Point X="391" Y="326" T="0"/>
+        <Point X="391" Y="329" T="0"/>
+        <Point X="391" Y="332" T="0"/>
+        <Point X="390" Y="335" T="0"/>
+        <Point X="390" Y="338" T="0"/>
+        <Point X="389" Y="342" T="0"/>
+        <Point X="389" Y="344" T="0"/>
+        <Point X="389" Y="347" T="0"/>
+        <Point X="388" Y="350" T="0"/>
+        <Point X="388" Y="352" T="0"/>
+        <Point X="388" Y="354" T="0"/>
+        <Point X="388" Y="356" T="0"/>
+        <Point X="388" Y="358" T="0"/>
+        <Point X="388" Y="360" T="0"/>
+        <Point X="388" Y="362" T="0"/>
+        <Point X="388" Y="364" T="0"/>
+        <Point X="388" Y="365" T="0"/>
+        <Point X="388" Y="367" T="0"/>
+        <Point X="388" Y="369" T="0"/>
+        <Point X="387" Y="370" T="0"/>
+        <Point X="387" Y="372" T="0"/>
+    </Stroke>
+    <Stroke index="2">
+        <Point X="385" Y="393" T="0"/>
+        <Point X="384" Y="393" T="0"/>
+        <Point X="384" Y="392" T="0"/>
+        <Point X="383" Y="392" T="0"/>
+    </Stroke>
+</Gesture>

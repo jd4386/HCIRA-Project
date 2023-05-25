@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<Gesture Name="exclamation_point08" Subject="3" Number="8" NumPts="30">
+    <Stroke index="1">
+        <Point X="351" Y="259" T="0"/>
+        <Point X="350" Y="259" T="0"/>
+        <Point X="350" Y="258" T="0"/>
+        <Point X="350" Y="259" T="0"/>
+        <Point X="350" Y="260" T="0"/>
+        <Point X="350" Y="262" T="0"/>
+        <Point X="350" Y="265" T="0"/>
+        <Point X="350" Y="267" T="0"/>
+        <Point X="350" Y="271" T="0"/>
+        <Point X="350" Y="275" T="0"/>
+        <Point X="350" Y="281" T="0"/>
+        <Point X="350" Y="287" T="0"/>
+        <Point X="350" Y="292" T="0"/>
+        <Point X="350" Y="299" T="0"/>
+        <Point X="350" Y="306" T="0"/>
+        <Point X="349" Y="313" T="0"/>
+        <Point X="349" Y="319" T="0"/>
+        <Point X="348" Y="326" T="0"/>
+        <Point X="347" Y="334" T="0"/>
+        <Point X="347" Y="341" T="0"/>
+        <Point X="346" Y="346" T="0"/>
+        <Point X="346" Y="352" T="0"/>
+        <Point X="346" Y="358" T="0"/>
+        <Point X="346" Y="363" T="0"/>
+        <Point X="346" Y="367" T="0"/>
+    </Stroke>
+    <Stroke index="2">
+        <Point X="343" Y="408" T="0"/>
+        <Point X="342" Y="407" T="0"/>
+        <Point X="342" Y="406" T="0"/>
+        <Point X="341" Y="406" T="0"/>
+        <Point X="342" Y="407" T="0"/>
+    </Stroke>
+</Gesture>
