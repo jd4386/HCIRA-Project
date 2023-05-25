@@ -10,8 +10,6 @@ import store
 import tkinter as tk
 import xml.dom.minidom
 import xml.etree.ElementTree as ET
-import ndollartesting
-import ndollar
 
 
 # Global variables
@@ -32,8 +30,8 @@ Gestures = [
     'right_curly_brace',
     'star',
     'pigtail',
-] if not store.multistrokeExport else ndollartesting.Gestures
-DatasetPath = 'Project 2/custom_xml_logs' if not store.multistrokeExport else 'Project 2/ndollar_xml_logs'
+]
+DatasetPath = 'Part 5/custom_xml_logs'
 CurrentGestureIndex = 0
 MaxGestureIndex = len(Gestures)
 CurrentSampleCount = 1
@@ -84,7 +82,6 @@ def datasetWindow(root, getXY, drawLine, clearCanvas):
     # Attaching the left mouse click and mouse motion to the designated functions.
     canvas.bind('<Button-1>', lambda event: getXY(event, canvas, None, False))
     canvas.bind('<B1-Motion>', lambda event: drawLine(event, canvas))
-    canvas.bind('<ButtonRelease-1>', lambda event: ndollar.release(event))
 
     # Next button that saves the canvas points and moves on to the next gesture
     nextButtonText = tk.StringVar()
@@ -100,7 +97,7 @@ def datasetWindow(root, getXY, drawLine, clearCanvas):
     button.pack(pady=5)
 
     # Clear button that resets the canvas
-    button = tk.Button(datasetWindow, text='Clear', width=25, command=lambda: ndollar.clearCanvas(canvas))
+    button = tk.Button(datasetWindow, text='Clear', width=25, command=lambda: clearCanvas(canvas))
     button.pack(pady=5)
 
     # Close button that closes the window
@@ -141,7 +138,7 @@ def initUser():
 def nextGesture(datasetWindow, canvas, clearCanvas, gestureDisplayText, countDisplayText, nextButtonText):
     global CurrentGestureIndex, CurrentSampleCount, MaxGestureIndex, MaxSampleCount
 
-    saveToXML(Gestures[CurrentGestureIndex], CurrentSampleCount, store.currentUnistroke if not store.multistrokeExport else store.currentMultistroke)
+    saveToXML(Gestures[CurrentGestureIndex], CurrentSampleCount, store.currentUnistroke)
 
     clearCanvas(canvas)
 
@@ -150,9 +147,6 @@ def nextGesture(datasetWindow, canvas, clearCanvas, gestureDisplayText, countDis
         return
 
     updateDisplayTexts(gestureDisplayText, countDisplayText, nextButtonText)
-
-    store.resetCurrentMultistroke()
-    store.resetCurrentUnistroke()
 
 
 # Updating the prompt text
@@ -180,20 +174,14 @@ def saveToXML(name, gesture_count, points):
     finalPath = os.path.join(DatasetPath, CurrentUser, name + f'{gesture_count:02d}.xml')
 
     root = ET.Element('Gesture', attrib={
-        'Name': f'{name}{gesture_count:02d}',
+        'Name': f'{gesture_count:02d}',
         'Subject': str(int(CurrentUser[4:])),
         'Number': str(gesture_count),
-        'NumPts': str(len(points) if not store.multistrokeExport else sum(map(len, points)))
+        'NumPts': str(len(points))
     })
 
-    if not store.multistrokeExport:
-        for point in points:
-            ET.SubElement(root, 'Point', X=str(point[0]), Y=str(point[1]), T='0')
-    else:
-        for stroke in range(len(points)):
-            stroke_element = ET.SubElement(root, 'Stroke', index=str(stroke + 1))
-            for point in points[stroke]:
-                ET.SubElement(stroke_element, 'Point', X=str(point[0]), Y=str(point[1]), T='0')
+    for point in points:
+        ET.SubElement(root, 'Point', X=str(point[0]), Y=str(point[1]))
     
     pretty_xml = xml.dom.minidom.parseString(ET.tostring(root)).toprettyxml(indent="    ")
 

@@ -12,19 +12,13 @@ import tkinter as tk
 import testing
 import export
 import store
-import ndollar
-import ndollartesting
 
 # Variable to control whether the GUI is displayed or not
-guiFlag = True
-nDollarWindowFlag = False
+guiFlag = False
 
 # If guiFlag is False, run the testing function
 if not guiFlag:
-    if not nDollarWindowFlag:
-        ndollartesting.main()
-    else:
-        testing.main()
+    testing.main()
 
 # Preprocessing the template unistrokes
 unistrokes = {key: recognizer.preprocess(value) for key, value in recognizer.Unistrokes.items()}
@@ -35,11 +29,7 @@ presentX, presentY = 0, 0
 
 # Function to capture the initial mouse coordinates
 def getXY(event, canvas, displayText, displayTextFlag=True):
-    if not store.multistrokeFlag or store.resetCanvasFlag:
-        store.resetCanvasFlag = False
-        store.resetCurrentMultistroke()
-        store.resetCurrentUnistroke()
-        canvas.delete("all")
+    canvas.delete("all")
 
     # Updating the initial mouse coordinates
     global presentX, presentY
@@ -61,7 +51,7 @@ def getXY(event, canvas, displayText, displayTextFlag=True):
 
     # Updating the display text
     if displayTextFlag:
-        displayText.set('Recording unistroke...' if not store.multistrokeFlag else f'Recording stroke #{len(store.currentMultistroke) + 1} ...')
+        displayText.set('Recording unistroke...')
 
     
 # Function to draw a line from the initial points to the new mouse location and updates the points to the new mouse location
@@ -148,10 +138,6 @@ button.pack(pady=5)
 
 # Create dataset button that opens a new window
 button = tk.Button(root, text='Create Dataset', width=25, command=lambda: export.datasetWindow(root, getXY, drawLine, clearCanvas))
-button.pack(pady=5)
-
-# nDollar Recognizer button that opens a new window
-button = tk.Button(root, text='Multistroke Recognizer', width=25, command=lambda: ndollar.nDollarWindow(root, getXY, drawLine))
 button.pack(pady=5)
 
 # Code to keep the window running until closed
